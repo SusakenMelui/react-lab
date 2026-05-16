@@ -1,5 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
+import "milligram";
+
 import {useState} from "react";
 
 function App() {
@@ -25,7 +27,7 @@ function App() {
 
     function logout() {
         // iAmIn = false;
-        setEmail("");
+        setEmail("Twój email");
         setLogin(true);
     }
 
@@ -53,6 +55,7 @@ function App() {
 
             {!login && <div>
                 Hi {email}!
+
                 <button onClick={logout}>Wyloguj</button>
 
 
