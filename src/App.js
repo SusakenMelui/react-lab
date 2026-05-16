@@ -9,11 +9,26 @@ function App() {
         setEmail(event.target.value);
     }
 
+    let komunikat = "";
+
+    if (email.length <= 4) {
+        komunikat = "Twój adres jest za krótki";
+    }
+    if (email.length > 4 && email.length <= 10) {
+        komunikat = "Twój adres jest ok";
+    }
+
+    if (email.length >= 10) {
+        komunikat = "Twój adres jest za długi";
+    }
+
+
     return (
         <div className="App">
 
             <h1>Hello. My email is {email}</h1>
-            <input type="text" value = {email} onChange={handleChange}/>
+            <div>{komunikat}</div>
+            <input type="text" value={email} onChange={handleChange}/>
 
         </div>
     );
