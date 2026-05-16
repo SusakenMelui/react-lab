@@ -2,67 +2,64 @@ import logo from './logo.svg';
 import './App.css';
 import "milligram";
 import LoginForm from "./LoginForm";
+import UserPanel from "./UserPanel";
 
 import {useState} from "react";
 
 function App() {
-    const [email, setEmail] = useState("mojemail@gmail.com");
-    const [loginScreen, setLoginScreen] = useState(true);
+    // const [email, setEmail] = useState("mojemail@gmail.com");
+    // const [loginScreen, setLoginScreen] = useState(true);
+    const [loggedInUsername, setLoggedInUsername] = useState(null);
+    //
+    // function handleChange(event) {
+    //     setEmail(event.target.value);
+    // }
+    //
+    // function handleLogin(email){
+    //     setEmail(email);
+    //     setLoginScreen(false);
+    // }
 
-    function handleChange(event) {
-        setEmail(event.target.value);
-    }
 
-    function handleLogin(email){
-        setEmail(email);
-        setLoginScreen(false);
-    }
-
-
-    // let login = true;
-    // let iAmIn = false;
-
-    let komunikat = "";
-
-    function pop() {
-        alert(email);
-        // iAmIn = true;
-        setLoginScreen(false)
-
-    }
-
-    function logout() {
-        // iAmIn = false;
-        setEmail("Twój email");
-        setLoginScreen(true);
-    }
-
-    if (email.length <= 4) {
-        komunikat = "Twój adres jest za krótki";
-    }
-    if (email.length > 4 && email.length <= 10) {
-        komunikat = "Twój adres jest ok";
-
-    }
-    if (email.length >= 10) {
-        komunikat = "Twój adres jest za długi";
-    }
+    // let komunikat = "";
+    //
+    // function pop() {
+    //     alert(email);
+    //     // iAmIn = true;
+    //     setLoginScreen(false)
+    //
+    // }
+    //
+    // function logout() {
+    //     // iAmIn = false;
+    //     setEmail("Twój email");
+    //     setLoginScreen(true);
+    // }
+    //
+    // if (email.length <= 4) {
+    //     komunikat = "Twój adres jest za krótki";
+    // }
+    // if (email.length > 4 && email.length <= 10) {
+    //     komunikat = "Twój adres jest ok";
+    //
+    // }
+    // if (email.length >= 10) {
+    //     komunikat = "Twój adres jest za długi";
+    // }
 
 
     return (
         <div className="App">
 
-            {loginScreen && <div className="container">
-                <LoginForm onLogin={handleLogin}/>
-            </div>}
+            <h1>System do zapisów na zajęcia</h1>
+            {
+                loggedInUsername ?
+                    <UserPanel email={loggedInUsername} logout={() => setLoggedInUsername(null)}/>
+                    :
+                    <LoginForm onLogin={(email) => setLoggedInUsername(email)}/>
 
-            {!loginScreen && <div className="container">
-                Hi {email}!
+            }
 
-                <button onClick={logout}>Wyloguj</button>
-
-
-            </div>}
 
         </div>
     );

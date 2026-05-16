@@ -3,7 +3,7 @@ import {useState} from "react";
 export default function LoginForm(props) {
     const [email, setEmail] = useState('');
 
-    return <div>
+    return <div className= "container">
         <label>Zaloguj się e-mailem</label>
         <input type="text" value={email} onChange={(e) => setEmail(e.target.value)}/>
         <button type="button" onClick={() => props.onLogin(email)}>
