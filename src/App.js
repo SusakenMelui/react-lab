@@ -1,15 +1,21 @@
 import logo from './logo.svg';
 import './App.css';
 import "milligram";
+import LoginForm from "./LoginForm";
 
 import {useState} from "react";
 
 function App() {
     const [email, setEmail] = useState("mojemail@gmail.com");
-    const [login, setLogin] = useState(true);
+    const [loginScreen, setLoginScreen] = useState(true);
 
     function handleChange(event) {
         setEmail(event.target.value);
+    }
+
+    function handleLogin(email){
+        setEmail(email);
+        setLoginScreen(false);
     }
 
 
@@ -21,14 +27,14 @@ function App() {
     function pop() {
         alert(email);
         // iAmIn = true;
-        setLogin(false)
+        setLoginScreen(false)
 
     }
 
     function logout() {
         // iAmIn = false;
         setEmail("Twój email");
-        setLogin(true);
+        setLoginScreen(true);
     }
 
     if (email.length <= 4) {
@@ -46,14 +52,11 @@ function App() {
     return (
         <div className="App">
 
-            {login && <div className="container">
-                <h1>Hello. My email is {email}</h1>
-                <div>{komunikat}</div>
-                <input type="text" value={email} onChange={handleChange}/>
-                <button onClick={pop}>Zaloguj</button>
+            {loginScreen && <div className="container">
+                <LoginForm onLogin={handleLogin}/>
             </div>}
 
-            {!login && <div className="container">
+            {!loginScreen && <div className="container">
                 Hi {email}!
 
                 <button onClick={logout}>Wyloguj</button>
