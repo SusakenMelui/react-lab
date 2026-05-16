@@ -1,12 +1,14 @@
 import {useState} from "react";
+import MeetingsPage from "./meetings/MeetingsPage";
 
-export default function UserPanel(prep) {
+export default function UserPanel({username, logout}) {
 
     return (
 
         <div className="container">
-            Hi {prep.email}!
-            <button onClick={prep.logout}>Wyloguj</button>
+            Hi {username}!
+            <button onClick={logout}>Wyloguj</button>
+            <MeetingsPage username = {username}/>
 
 
         </div>

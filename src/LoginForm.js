@@ -11,9 +11,4 @@ export default function LoginForm(props) {
         </button>
     </div>;
 
-    //
-    // <h1>Hello. My email is {email}</h1>
-    // <div>{komunikat}</div>
-    // <input type="text" value={email} onChange={handleChange}/>
-    // <button onClick={pop}>Zaloguj</button>
 }

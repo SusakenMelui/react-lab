@@ -58,11 +58,12 @@ function App() {
                     :
                     <LoginForm onLogin={(email) => setLoggedInUsername(email)}/>
 
-            }
+}
 
 
-        </div>
-    );
+</div>
+)
+    ;
 }
 
 export default App;
